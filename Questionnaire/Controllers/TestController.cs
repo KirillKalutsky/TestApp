@@ -3,6 +3,7 @@ using Questionnaire.Models;
 using Questionnaire.Models.Dto;
 using Questionnaire.Services;
 using Questionnaire.Extensions;
+using System.ComponentModel.DataAnnotations;
 
 namespace Questionnaire.Controllers
 {
@@ -26,7 +27,7 @@ namespace Questionnaire.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Index([FromRoute] Guid id)
+        public async Task<IActionResult> Index([FromRoute][Required] Guid id)
         {
             var test = await testService.GetTestAsync(id);
 
@@ -36,13 +37,19 @@ namespace Questionnaire.Controllers
         [HttpPost]
         public async Task<IActionResult> SendTest([FromForm] TestDto test)
         {
+            if (test.RespondentFullName==null)
+            {
+                var testDto = (await testService.GetTestAsync(test.Id)).ToDto();
+                return View("Views/Test/Index.cshtml", testDto);
+            }
+
             await testService.SaveTestResult(test);
 
             return Redirect("Test");
         }
 
         [HttpGet("result/{id}")]
-        public async Task<IActionResult> GetTestResults([FromRoute] Guid id)
+        public async Task<IActionResult> GetTestResults([FromRoute][Required] Guid id)
         {
             var results = await testService.GetTestResults(id);
 

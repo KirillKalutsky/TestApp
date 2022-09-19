@@ -29,7 +29,6 @@ namespace Questionnaire.Services
             return results.Where(x=>x.Test.Id==testId).ToList();
         }
 
-
         public async Task SaveTestResult(TestDto testDto)
         {
             var result = new TestResult()
@@ -58,26 +57,10 @@ namespace Questionnaire.Services
 
             result.Answers = answersResult;
 
-           /* {
-                Answers = testDto.Questions.Select(async question => 
-                {
-                    var curQuestion = await questionRepository.Find(question.Id);
-
-                    return new AnswerOnQuestion()
-                    {
-                        Question = curQuestion,
-                        SelectedAnswers = question.Answers.Select(async answer => await answerRepository.Find(answer.Id)).ToList()
-                    };
-                }).ToList()
-            };*/
-
             await testResultRepositoy.Insert(result);
 
             await testResultRepositoy.SaveChanges();
         }
-
-        
-
 
         public async Task<Test> GetTestAsync(Guid id) =>
             await testRepository.Find(id);
