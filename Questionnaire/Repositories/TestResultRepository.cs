@@ -31,9 +31,5 @@ namespace Questionnaire.Repositories
             return entity.Id;
         }
 
-        public override Task Update(TestResult entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -10,19 +10,15 @@ namespace Questionnaire.Repositories
         {
         }
 
-        public override Task<List<Answer>> GetAll()
+        public override Task<List<Answer>> GetAll() =>
+            items.ToListAsync();
+
+        public override async Task<Guid> Insert(Answer entity)
         {
-            throw new NotImplementedException();
+            await items.AddAsync(entity);
+
+            return entity.Id;
         }
 
-        public override Task<Guid> Insert(Answer entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Task Update(Answer entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

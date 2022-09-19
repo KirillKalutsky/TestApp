@@ -34,6 +34,5 @@ namespace Questionnaire.Repositories
             await context.SaveChangesAsync();
 
         public abstract Task<List<T>> GetAll();
-        public abstract Task Update(T entity);
     }
 }
