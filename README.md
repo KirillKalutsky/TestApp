@@ -1,0 +1,1 @@
+<p>startPage: {hostname}:{port}/test - список тестов</p>
