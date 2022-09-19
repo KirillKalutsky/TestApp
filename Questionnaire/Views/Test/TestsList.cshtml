@@ -1,0 +1,12 @@
+﻿@using Questionnaire.Models.Dto;
+@model List<TestDto>;
+
+@foreach(var test in Model)
+{
+    <div>
+        <h2>@test.Title</h2>
+        @Html.ActionLink("Перейти к тесту", "Index", "Test", new { id = @test.Id});
+        @Html.ActionLink("Перейти к результатам теста", "GetTestResults", "Test", new { id = @test.Id});
+    </div>
+}
+

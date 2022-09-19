@@ -1,0 +1,16 @@
+﻿@using Questionnaire.Models;
+@model TestResult;
+
+<h1>@Model.Test.Title</h1>
+<h2>@Model.PersonName</h2>
+
+@foreach(var question in Model.Answers)
+{
+    <div>
+        <h3>@question.Question.Text</h3>
+        @foreach(var answer in question.SelectedAnswers)
+        {
+            <span>@answer.Text</span>
+        }
+    </div>
+}

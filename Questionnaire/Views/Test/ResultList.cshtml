@@ -1,0 +1,11 @@
+﻿@using Questionnaire.Models;
+@model List<TestResult>;
+
+@foreach(var res in Model)
+{
+    <h2>@res.PersonName</h2>
+    <div>
+        @Html.ActionLink("Ознакомиться с результатом","GetResult","TestResult",new {id=@res.Id});
+    </div>
+}
+

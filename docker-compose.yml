@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  test_app:
+    container_name: test_app
+    depends_on:
+      - "db_test"
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_CONNECTION_STRING: "host=db_test;port=5432;database=tests;username=postgres;password=124356"
+    ports:
+      - "5000:80"
+    
+  db_test:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 124356
+      POSTGRES_DB: tests
+      LANG: 'sv_SE.UTF-8'
+      LANGUAGE: 'sv_SE.UTF-8'
+      LC_ALL: 'sv_SE.UTF-8'
+      LC_COLLATE: 'sv_SE.UTF-8'
+      LC_CTYPE: 'sv_SE.UTF-8'
+    ports:
+      - "5432:5432"
+   
+
+  
+    
