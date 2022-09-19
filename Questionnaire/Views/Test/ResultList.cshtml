@@ -5,7 +5,7 @@
 {
     <h2>@res.PersonName</h2>
     <div>
-        @Html.ActionLink("Ознакомиться с результатом","GetResult","TestResult",new {id=@res.Id});
+        @Html.ActionLink("Ознакомиться с результатом","GetResult","TestResult",new {id=@res.Id}, new { @class = "button"})
     </div>
 }
 

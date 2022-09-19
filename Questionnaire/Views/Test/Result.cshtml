@@ -6,11 +6,12 @@
 
 @foreach(var question in Model.Answers)
 {
-    <div>
+    <div class="question">
         <h3>@question.Question.Text</h3>
+        <span>Выбранные ответы:</span>
         @foreach(var answer in question.SelectedAnswers)
         {
-            <span>@answer.Text</span>
+            <li>@answer.Text</li>
         }
     </div>
 }

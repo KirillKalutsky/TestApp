@@ -16,3 +16,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.question {
+    background-color: gainsboro;
+    border-bottom: solid;
+}
+
+div{
+    display:block;
+}
+
+.button {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: chartreuse;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
