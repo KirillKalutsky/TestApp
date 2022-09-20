@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Questionnaire.Models;
-using Questionnaire.Models.Dto;
 using Questionnaire.Services;
 using Questionnaire.Extensions;
 using System.ComponentModel.DataAnnotations;
@@ -21,7 +19,7 @@ namespace Questionnaire.Controllers
         {
             var res = await _resultService.GetResultById(id);
 
-            return View("Views/Test/Result.cshtml", res);
+            return View("Views/Test/Result.cshtml", res.ToDto());
         }
     }
 }

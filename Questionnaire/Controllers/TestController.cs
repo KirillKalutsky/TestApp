@@ -37,7 +37,8 @@ namespace Questionnaire.Controllers
         [HttpPost]
         public async Task<IActionResult> SendTest([FromForm] TestDto test)
         {
-            if (test.RespondentFullName==null)
+            if (test.RespondentFullName==null || 
+                !test.AreQuestionsAnswered)
             {
                 var testDto = (await testService.GetTestAsync(test.Id)).ToDto();
                 return View("Views/Test/Index.cshtml", testDto);
@@ -53,7 +54,7 @@ namespace Questionnaire.Controllers
         {
             var results = await testService.GetTestResults(id);
 
-            return View("Views/Test/ResultList.cshtml", results);
+            return View("Views/Test/ResultList.cshtml", results.Select(res=>res.ToDto()).ToList());
         }
 
     }

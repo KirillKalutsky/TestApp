@@ -1,10 +1,10 @@
-﻿@using Questionnaire.Models;
-@model TestResult;
+﻿@using Questionnaire.Models.Dto;
+@model TestResultDto;
 
-<h1>@Model.Test.Title</h1>
+<h1>@Model.TestTitle</h1>
 <h2>@Model.PersonName</h2>
 
-@foreach(var question in Model.Answers)
+@foreach(var question in Model.AnswersOnQuestions)
 {
     <div class="question">
         <h3>@question.Question.Text</h3>
